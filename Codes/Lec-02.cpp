@@ -2,82 +2,75 @@
 using namespace std;
 using ll = long long;
 
-const char el = '\n', sp = ' ';
+struct PersistentArray {
+    // Each index holds a vector of {time, value} pairs
+    vector<vector<pair<int, int>>> data;
 
-const int mod = 1e9 + 7;
-
-struct PST {
-    static ll f(ll a, ll b) {
-        return a + b;
-    }
-
-    struct node {
-        node *l, *r;
-        ll sum;
-
-        node(ll val) : l(nullptr), r(nullptr), sum(val) {
+    PersistentArray(vector<int>& a) {
+        int n = a.size();
+        data.resize(n);
+        for (int i = 0; i < n; i++) {
+            data[i].push_back({0, a[i]});
         }
-
-        node(node *l, node *r) : l(l), r(r), sum(0) {
-            if (l) sum = f(sum, l->sum);
-            if (r) sum = f(sum, r->sum);
-        }
-    };
-
-    node *build(int tl, int tr, vector<int> &a) {
-        if (tl == tr) return new node(a[tl]);
-        int tm = (tl + tr) / 2;
-        return new node(build(tl, tm, a), build(tm + 1, tr, a));
     }
 
-    ll query(node *v, int tl, int tr, int l, int r) {
-        if (l > tr || r < tl) return 0;
-        if (l <= tl && tr <= r) return v->sum;
-        int tm = (tl + tr) / 2;
-        return f(query(v->l, tl, tm, l, r), query(v->r, tm + 1, tr, l, r));
+    int get_item(int index, int time) {
+        // Find the first element with time > given time, then step back
+        auto& history = data[index];
+        auto ub = upper_bound(history.begin(), history.end(), make_pair(time, INT_MAX));
+
+        // If the user asks for a time before time 0, this might fail,
+        // but since we init at time 0, prev(ub) is safe.
+        return prev(ub)->second;
     }
 
-    node *update(node *v, int tl, int tr, int idx, ll val) {
-        if (tl == tr) return new node(val);
-        int tm = (tl + tr) / 2;
-        if (idx <= tm) return new node(update(v->l, tl, tm, idx, val), v->r);
-        return new node(v->l, update(v->r, tm + 1, tr, idx, val));
-    }
-
-    int n;
-    vector<node *> roots;
-
-    PST(vector<int> &a) {
-        n = a.size();
-        roots.push_back(build(0, n - 1, a));
+    void update_item(int index, int value, int time) {
+        // Ensure strictly increasing time for this specific index
+        assert(!data[index].empty() && data[index].back().first < time);
+        data[index].push_back({time, value});
     }
 };
 
-void solve() {
-    int n, q;
-    cin >> n >> q;
-    vector<int> a(n);
-    for (int &i: a) cin >> i;
-    PST pst(a);
-    while (q--) {
-        int t, k;
-        cin >> t >> k, k--;
-        if (t == 1) {
-            int val, idx;
-            cin >> idx >> val, idx--;
-            pst.roots[k] = pst.update(pst.roots[k], 0, n - 1, idx, val);
-        } else if (t == 2) {
-            int l, r;
-            cin >> l >> r, l--, r--;
-            cout << pst.query(pst.roots[k], 0, n - 1, l, r) << el;
-        } else {
-            pst.roots.push_back(pst.roots[k]);
-        }
-    }
-}
 
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    solve();
-}
+struct Node {
+    ll sum = 0;
+    Node *left, *right;
+    Node(int sum) :sum(sum) ,left(nullptr), right(nullptr) {}
+    Node(Node *left, Node *right) : left(left), right(right){
+        if (left) sum+=left->sum;
+        if (right) sum+=right->sum;
+    }
+};
+
+struct PersistentSegTree {
+    int n;
+    vector<Node*> versions;
+    PersistentSegTree(int n) :n(n){ versions.push_back(build(0, n-1));};
+    Node *build(int l , int r) {
+        if (l == r) return new Node(0);
+        int mid = (l + r) / 2;
+        return new Node(build(l, mid), build(mid + 1, r));
+    }
+    Node *update(Node *node,int idx,int val, int l , int r) {
+        if (l == r) return new Node(val);
+        int mid = (l + r) / 2;
+        if (idx <= mid)
+            return new Node(update(node->left, idx, val, l, mid), node->right);
+        return new Node(node->left, update(node->right, idx, val, mid + 1, r));
+    }
+    Node* query(Node *node, int a, int b, int l , int r) {
+        if (l > b || r < a) return nullptr;
+        if (l >= a && r <= b) return node;
+        int mid = (l + r) / 2;
+        return new Node(query(node->left, a, b, l, mid) , query(node->right, a, b, mid + 1, r));
+    }
+    Node* update(int id,int idx,int val){
+        return update(versions[id],idx,val,0,n-1);
+    }
+    ll query(int id, int a , int b){
+        return query(versions[id],a,b,0,n-1)->sum;
+    }
+    void add(Node *node){
+        versions.push_back(node);
+    }
+};
