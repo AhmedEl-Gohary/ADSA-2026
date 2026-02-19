@@ -17,11 +17,11 @@ struct PersistentArray {
     int get_item(int index, int time) {
         // Find the first element with time > given time, then step back
         auto& history = data[index];
-        auto ub = std::upper_bound(history.begin(), history.end(), std::make_pair(time, INT_MAX));
+        auto ub = upper_bound(history.begin(), history.end(), make_pair(time, INT_MAX));
 
         // If the user asks for a time before time 0, this might fail,
         // but since we init at time 0, prev(ub) is safe.
-        return std::prev(ub)->second;
+        return prev(ub)->second;
     }
 
     void update_item(int index, int value, int time) {
