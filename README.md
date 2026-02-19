@@ -10,7 +10,7 @@ We will build upon the foundations taught in the CSEN 301 course and CSEN 703 An
 * **Instruction:** The course is taught by the coaches of the GUC ICPC community and is supervised by Professor Slim Abdennadher.
 * **Structure:** The course consists of 12 lectures and 11 labs. Each lecture is followed by a lab except the first one.
 * **Format:** The course will be mainly composed of lectures explaining the theoretical concepts, followed by hands-on labs, where we will implement the explained algorithms to solve some practice problems.
-
+* **Study Materials:** Please note that the lecture slides are intended primarily as a quick reference and study aid. For a deeper understanding of the topics, always check the references section at the end of the slides. There, you will find detailed YouTube video explanations by the instructors, alongside other highly recommended online resources. You are strongly encouraged to utilize these supplementary materials rather than relying exclusively on the lecture.
 ---
 
 ## Assignments, Labs & Grades
