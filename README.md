@@ -16,7 +16,7 @@ We will build upon the foundations taught in the CSEN 301 course and CSEN 703 An
 ## Assignments, Labs & Grades
 * **Platform:** All assignments and labs are hosted on Codeforces. 
 * **Action Required:** Access the group here: [Codeforces Group](https://codeforces.com/group/xncV9lPiUu/). **Make sure to join as a participant.**
-* **Grades:** You can track your progress and marks throughout the semester here: [Student Grades](https://docs.google.com/spreadsheets/d/1hcPKplXPH3Xhe_Eenfw7dNlsjZHaRFz_19jCOo-6Msw/edit?gid=0#gid=0).
+* **Grades:** You can track your attendance and grades throughout the semester here: [Student Grades](https://docs.google.com/spreadsheets/d/1hcPKplXPH3Xhe_Eenfw7dNlsjZHaRFz_19jCOo-6Msw/edit?gid=0#gid=0).
 
 ---
 
