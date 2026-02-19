@@ -30,6 +30,8 @@ All assignments will be evaluated by the instructors.
 | **In-lab assignments** | 20% | 12 assignments total (best 9 count). |
 | **Bonus assignments** | +12% | 12 assignments total (more involved problems, 1% each). |
 
+> **Important Note on Deadlines:** The submission deadline for both take-home and in-lab assignments is strictly before the beginning of the next lecture. Please note that for in-lab assignments, you may not leave the lab early unless you have completely finished the assignment or the scheduled lab slot has ended.
+
 ---
 
 ## Course Content
