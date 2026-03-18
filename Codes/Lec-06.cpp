@@ -6,6 +6,35 @@ const double PI = acos(-1);
 
 using cd = complex<double>;
 
+/*
+This is the version that was explained in the lecture.
+It explicitly returns the array of samples.
+Notice that we don't need to pass the array of points to evaluate as we can infer them from the array size.
+ */
+vector<cd> fft_explicit_return(vector<cd> &a) {
+    if (a.size() == 1) return {a[0]};
+
+    int n = a.size();
+    vector<cd> a0(n / 2), a1(n / 2);
+    for (int i = 0; i < n / 2; i++) {
+        a0[i] = a[2 * i];
+        a1[i] = a[2 * i + 1];
+    }
+    auto f0 = fft_explicit_return(a0), f1 = fft_explicit_return(a1);
+    vector<cd> f(n);
+    cd w(cos(2 * PI / n), sin(2 * PI / n)), wi = 1;
+    for (int i = 0; i < n / 2; i++) {
+        f[i] = f0[i] + wi * f1[i];
+        f[i + n / 2] = f0[i] - wi * f1[i];
+        wi = wi * w;
+    }
+    return f;
+}
+
+/*
+This is a more optimized version that does the FFT in place.
+It also handles the case when we want to find the IFFT.
+ */
 void fft(vector<cd> &a, bool invert) {
     if (a.size() == 1) return;
 
