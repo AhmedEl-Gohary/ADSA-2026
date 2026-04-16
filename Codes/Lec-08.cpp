@@ -3,7 +3,7 @@ using namespace std;
 
 struct TwoSAT {
     int n;
-    vector<vector<int>> g, rg ; // implication graph + reverse (2n nodes each )
+    vector<vector<int>> g, rg ; // implication graph + reverse (2n nodes each)
     vector<int> finish_order;
     vector<int> comp ; // comp [v] = SCC id of node v
     vector<bool> visited ;
@@ -13,10 +13,10 @@ struct TwoSAT {
         g[u].push_back (v);
         rg[v].push_back(u);
     }
-    // Clause : ( x_i = f ) OR ( x_j = h )
-    // node i = " x_i is true " | node i + n = " x_i is false "
-    // f = true -> positive literal ( x_i )
-    // f = false -> negative literal ( not x_i )
+    // Clause : (x_i = f) OR (x_j = h)
+    // node i = "x_i is true" | node i + n = "x_i is false"
+    // f = true -> positive literal (x_i)
+    // f = false -> negative literal (not x_i)
     void add_clause (int i, bool f, int j, bool h) {
         add_edge(i + (f ? n : 0), j + (h ? 0 : n)); // neg ( xi = f ) -> ( xj = h )
         add_edge(j + (h ? n : 0), i + (f ? 0 : n )); // neg ( xj = h ) -> ( xi = f )
