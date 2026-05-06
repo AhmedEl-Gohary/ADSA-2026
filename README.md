@@ -37,9 +37,9 @@ All assignments will be evaluated by the instructors.
 
 | Assessment Type           | Weight | Details                                                              |
 |:--------------------------|:-------|:---------------------------------------------------------------------|
-| **Take-home assignments** | 50%    | 11 assignments total (best 8 count). Evaluated in the following lab. |
+| **Take-home assignments** | 50%    | 11 assignments total (best 9 count). Evaluated in the following lab. |
 | **Quizzes**               | 30%    | 3 quizzes total (no best/none dropped).                              |
-| **In-lab assignments**    | 20%    | 11 assignments total (best 8 count).                                 |
+| **In-lab assignments**    | 20%    | 11 assignments total (best 9 count).                                 |
 | **Bonus assignments**     | +11%   | 11 assignments total (more involved problems, 1% each).              |
 
 > **Important Note on Deadlines:** The submission deadline for both take-home and in-lab assignments is strictly before
