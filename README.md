@@ -12,7 +12,7 @@ We will build upon the foundations taught in the CSEN 301 course and CSEN 703 An
 
 * **Instruction:** The course is taught by the coaches of the GUC ICPC community and is supervised by Professor Slim
   Abdennadher.
-* **Structure:** The course consists of 12 lectures and 11 labs. Each lecture is followed by a lab except the first one.
+* **Structure:** The course consists of 11 lectures and 11 labs. Each lecture is followed by a lab except the first one.
 * **Format:** The course will be mainly composed of lectures explaining the theoretical concepts, followed by hands-on
   labs, where we will implement the explained algorithms to solve some practice problems.
 * **Study Materials:** Please note that the lecture slides are intended primarily as a quick reference and aid to the
@@ -37,10 +37,10 @@ All assignments will be evaluated by the instructors.
 
 | Assessment Type           | Weight | Details                                                              |
 |:--------------------------|:-------|:---------------------------------------------------------------------|
-| **Take-home assignments** | 50%    | 12 assignments total (best 9 count). Evaluated in the following lab. |
+| **Take-home assignments** | 50%    | 11 assignments total (best 8 count). Evaluated in the following lab. |
 | **Quizzes**               | 30%    | 3 quizzes total (no best/none dropped).                              |
-| **In-lab assignments**    | 20%    | 11 assignments total (best 9 count).                                 |
-| **Bonus assignments**     | +12%   | 12 assignments total (more involved problems, 1% each).              |
+| **In-lab assignments**    | 20%    | 11 assignments total (best 8 count).                                 |
+| **Bonus assignments**     | +11%   | 11 assignments total (more involved problems, 1% each).              |
 
 > **Important Note on Deadlines:** The submission deadline for both take-home and in-lab assignments is strictly before
 > the beginning of the next lecture. Please note that for in-lab assignments, you may not leave the lab early unless you
